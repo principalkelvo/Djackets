@@ -35,10 +35,23 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   data(){
     return{
       showMobileMenu: false,
+    }
+  },
+  beforeCreate(){
+    this.$store.commit('initializeStore')
+
+    //check if token exists
+    if(this.$store.state.token){
+      axios.defaults.headers.common['Authorization']= "Token "+ this.$store.state.token
+    }
+    //if you are not authenticated
+    else{
+      axios.defaults.headers.common['Authorization']= ""
     }
   }
 }
