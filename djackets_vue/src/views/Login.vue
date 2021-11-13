@@ -1,22 +1,25 @@
 <template>
-  <section id="cover" class="min-vh-100">
-    <div id="cover-caption">
+  <section id="cover" class="hero">
+    <div id="cover-caption" class="hero-body">
       <div class="container">
-        <div class="columns">
+        <div class="columns has-text-white">
           <div class="column is-4 is-offset-4">
-            <h1 class="title">Login</h1>
-            <form>
+            <h1 class="title has-text-white">Login</h1>
+            <form @submit.prevent="submitForm" class="is-justify-content-center">
               <div class="field">
                 <label>Email</label>
                 <div class="conrol">
-                  <input type="email" name="email" class="input" placeholder="Email" />
+                  <input type="email" name="email" class="input" placeholder="Email" v-model="username"/>
                 </div>
               </div>
               <div class="field">
                 <label>Password</label>
                 <div class="conrol">
-                  <input type="password" name="password" class="input" placeholder="Password" />
+                  <input type="password" name="password" class="input" placeholder="Password" v-model="password"/>
                 </div>
+              </div>
+              <div class="notification is-danger" v-if="errors.length">
+                <p v-for="error in errors" v-bind:key="error">{{error}}</p>
               </div>
               <div class="field">
                 <div class="conrol">
@@ -32,7 +35,37 @@
 </template>
 
 <script>
+import axios from 'axios'
+import {toast} from 'bulma-toast'
+
 export default {
   name: "Login",
+  data(){
+    return{
+      username:'',
+      password :'',
+      errors:[]
+      }
+  },
+  methods:{
+    submitForm(){
+      axios.defaults.headers.common['Authorization']='' //reset the authorization
+      localStorage.removeItem('token') //just to make sure that we are not auntheticated
+      const formData={
+        username: this.usernameS,
+        password: this.password
+      }
+      axios
+        .post('/api/v1/token/login/',formData)
+        .then(response=>{
+          const token=response.data.auth_token
+
+          this.$store.commit('setToken', token)
+          axios.defaults.headers.common['Authorization']='Token '+token
+          localStorage.setItem('token', token)
+          this.$router.push('/myaccount')
+        })
+    }
+  }
 };
 </script>
