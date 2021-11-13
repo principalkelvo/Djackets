@@ -52,7 +52,7 @@ export default {
       axios.defaults.headers.common['Authorization']='' //reset the authorization
       localStorage.removeItem('token') //just to make sure that we are not auntheticated
       const formData={
-        username: this.usernameS,
+        username: this.username,
         password: this.password
       }
       axios
@@ -61,10 +61,20 @@ export default {
           const token=response.data.auth_token
 
           this.$store.commit('setToken', token)
-          axios.defaults.headers.common['Authorization']='Token '+token
+          axios.defaults.headers.common['Authorization']='Token '+ token
           localStorage.setItem('token', token)
           this.$router.push('/myaccount')
         })
+         .catch(error=>{
+            if(error.response){
+              for(const property in error.response.data){
+                this.errors.push(`${property}:${error.response.data[property]}`)
+              }
+            }
+            else if(error.message){
+              this.errors.push('Something went wrong. Please try again')
+            }
+          })
     }
   }
 };
