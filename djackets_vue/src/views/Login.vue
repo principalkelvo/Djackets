@@ -48,14 +48,15 @@ export default {
       }
   },
   methods:{
-    submitForm(){
+    async submitForm(){
+      this.$store.commit('setIsLoading',true)
       axios.defaults.headers.common['Authorization']='' //reset the authorization
       localStorage.removeItem('token') //just to make sure that we are not auntheticated
       const formData={
         username: this.username,
         password: this.password
       }
-      axios
+      await axios
         .post('/api/v1/token/login/',formData)
         .then(response=>{
           const token=response.data.auth_token
@@ -75,6 +76,8 @@ export default {
               this.errors.push('Something went wrong. Please try again')
             }
           })
+
+          this.$store.commit('setIsLoading',false)
     }
   }
 };

@@ -55,7 +55,8 @@ export default {
       }
   },
   methods:{
-    submitForm(){
+    async submitForm(){
+      this.$store.commit('setIsLoading',true)
       this.errors=[]
       if(this.username===''){
         this.errors.push('The username is missing')
@@ -94,6 +95,8 @@ export default {
               this.errors.push('Something went wrong. Please try again')
             }
           })
+
+          this.$store.commit('setIsLoading',false)
       }
 
       console.log('hello')
