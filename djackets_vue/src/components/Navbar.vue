@@ -32,7 +32,7 @@
             >
             </template>
             <template v-else>
-              <router-link to="/myaccount" class="button is-light"
+              <router-link to="/myaccount" class="button is-info"
               >My Profile</router-link
             >
             </template>
