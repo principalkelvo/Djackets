@@ -35,10 +35,12 @@ export default {
   },
   beforeCreate(){
     this.$store.commit('initializeStore')
+    
+    const token= this.$store.state.token
 
     //check if token exists
-    if(this.$store.state.token){
-      axios.defaults.headers.common['Authorization']= "Token "+ this.$store.state.token
+    if(token){
+      axios.defaults.headers.common['Authorization']= "Token "+ token
     }
     //if you are not authenticated
     else{
