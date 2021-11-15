@@ -4,7 +4,7 @@
           <div class="column is-12">
               <h1 class="title">My Profile</h1>
           </div>
-          <button @click="logout()" class="button is-danger">Log out</button>
+          <button @click="logout()" class="button is-danger">Log out</button>check logout method thwn delete this
       </div>
   </div>
 </template>
