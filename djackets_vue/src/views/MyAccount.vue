@@ -15,6 +15,7 @@ export default {
     name:'MyAccount',
     methods:{
         async logout(){
+            this.$store.commit('setIsLoading',true)
             await axios
                 .post('/api/v1/token/logout/')
                 .then(response=>{
@@ -27,7 +28,10 @@ export default {
                 localStorage.removeItem('token')
                 this.$store.commit('removeToken')
                 this.$router.push('/')
+
+                this.$store.commit('setIsLoading',false)
         }
+
     }
 }
 </script>
