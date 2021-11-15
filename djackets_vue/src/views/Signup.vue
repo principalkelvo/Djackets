@@ -32,6 +32,10 @@
                   <button class="button is-success">Submit</button>
                 </div>
               </div>
+              
+              <hr>
+
+              Or<router-link to="/log-in">click here </router-link>to Log-in
             </form>
           </div>
         </div>

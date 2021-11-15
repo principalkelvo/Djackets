@@ -26,6 +26,10 @@
                   <button class="button is-success">Submit</button>
                 </div>
               </div>
+              
+              <hr>
+
+              Or<router-link to="/sign-up">click here </router-link>to Register
             </form>
           </div>
         </div>
