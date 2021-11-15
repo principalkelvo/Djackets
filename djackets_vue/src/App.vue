@@ -28,11 +28,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 export default {
   name: 'App',
-  data(){
-    return{
-      showMobileMenu: false,
-    }
-  },
+  
   components:{
     Navbar,
     Footer
@@ -58,7 +54,7 @@ export default {
 $baseColor: rgba(30, 40, 50, 1);
 
 .is-loading-bar {
-  background: $baseColor;
+  background: white;
   height: 100vh;
   overflow: hidden;
   display: flex;
@@ -66,7 +62,7 @@ $baseColor: rgba(30, 40, 50, 1);
   justify-content: center;
   align-items: center;
   color: #fff;
-  font-size: 9.5rem;
+  font-size: 2.375rem;
 }
 
 .skewloader {
@@ -75,8 +71,8 @@ $baseColor: rgba(30, 40, 50, 1);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 500px;
-    height: 500px;
+    width: 125px;
+    height: 125px;
     position: absolute;
     transform: translate(-50%, -50%);
 
@@ -125,13 +121,13 @@ $baseColor: rgba(30, 40, 50, 1);
 .is-loading-bar{
     height:0px;
     overflow: hidden;
-    -webkit-transition: all 0.3s;
-    transition: all 0.3s;
+    -webkit-transition: all 1.3s;
+    transition: all 1.3s;
     opacity:0;
     
       &.is-loading{
 
-        height: 80px;
+        height: 130px;
         opacity:100%;
       }
 }

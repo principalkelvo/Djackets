@@ -43,6 +43,11 @@
 </template>
 <script>
 export default {
-    name:'Navbar'
+    name:'Navbar',
+    data(){
+    return{
+      showMobileMenu: false,
+    }
+  },
 }
 </script>
