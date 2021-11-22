@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import SignUp from '../views/Signup.vue'
 import Login from '../views/Login.vue'
 import MyAccount from '../views/MyAccount.vue'
+import Product from '../views/Product.vue'
 
 const routes = [
   {
@@ -33,6 +34,14 @@ const routes = [
     path: '/myaccount',
     name: 'MyAccount',
     component: MyAccount,
+    meta:{
+      requireLogin: true
+    }
+  },
+  {
+    path: '/:category_slug/:product_slug',
+    name: 'Product',
+    component: Product,
     meta:{
       requireLogin: true
     }
