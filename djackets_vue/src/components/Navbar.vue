@@ -40,7 +40,7 @@
               <span class="icon">
                 <i class="fas fa-shopping-cart"></i>
               </span>
-              <span>cart</span>
+              <span>Cart ({{cartTotalLength}})</span>
             </router-link>
           </div>
         </div>
@@ -54,7 +54,18 @@ export default {
     data(){
     return{
       showMobileMenu: false,
+      cart:{
+        items:[]
+      }
     }
   },
+  computed:{cartTotalLength(){
+    let totalLength= 0
+      for(let i=0;i<this.cart.items.length;i++){
+        totalLength+= this.cart.items[i].quantity
+      }
+      return totalLength
+    }
+}
 }
 </script>
