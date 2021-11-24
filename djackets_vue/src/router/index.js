@@ -6,6 +6,7 @@ import Login from '../views/Login.vue'
 import MyAccount from '../views/MyAccount.vue'
 import Product from '../views/Product.vue'
 import Category from '../views/Category.vue'
+import Search from '../views/Search.vue'
 
 const routes = [
   {
@@ -54,6 +55,11 @@ const routes = [
     meta:{
       requireLogin: true
     }
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: Search
   }
 ]
 
