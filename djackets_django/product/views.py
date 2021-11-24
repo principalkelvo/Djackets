@@ -36,7 +36,7 @@ class CategoryDetail(APIView):
             raise Http404
     
     def get(self,request, category_slug, format=None):
-        product= self.get_object(category_slug)
+        category= self.get_object(category_slug)
         serializer= CategorySerializer(category)
         return Response(serializer.data)
 
