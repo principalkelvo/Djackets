@@ -5,8 +5,8 @@ from rest_framework.serializers import Serializer
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Product
-from .serializers import ProductSerializer
+from .models import Category, Product
+from .serializers import ProductSerializer, CategorySerializer
 
 class LatestProductList(APIView): #viewset to get latest products to show in frontend
     def get(self,request, format= None):
@@ -25,5 +25,20 @@ class ProductDetail(APIView):
         product= self.get_object(category_slug, product_slug)
         serializer= ProductSerializer(product)
         return Response(serializer.data)
+
+
+class CategoryDetail(APIView):
+    def get_object(self,category_slug):
+        #check if product exists
+        try:
+            return Category.objects.get(slug=category_slug)
+        except Product.DoesNotExist:
+            raise Http404
+    
+    def get(self,request, category_slug, format=None):
+        product= self.get_object(category_slug)
+        serializer= CategorySerializer(category)
+        return Response(serializer.data)
+
 
 # Create your views here.
