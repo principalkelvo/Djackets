@@ -4,6 +4,7 @@
             <div class="column is-12">
                 <h1 class="title">Cart</h1>
             </div>
+            <!--table-->
             <div class="column is-12 box">
                 <table class="table is-fullwidth" v-if="cartTotalLength">
                     <thead>
@@ -24,6 +25,17 @@
                     </tbody>
                 </table>
                 <p v-else> You don't have any products in your cart...</p>
+            </div>
+
+            <!--Summary at the bottom of the cart-->
+            <div class="column is-12 box">
+                <h2 class="subtitle">Summary</h2>
+                <strong>${{ cartTotalPrice.toFixed(2) }}</strong>
+                ,{{ cartTotalLength }}items
+
+                <hr>
+
+                <router-link to="/cart/checkout" class="button is-dark">Proceed to Checkout</router-link>                
             </div>
         </div>
     </div>  
