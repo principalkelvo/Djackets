@@ -20,8 +20,7 @@
           v-for="product in latestProducts"
           v-bind:key="product.id"
           v-bind:product="product"
-        >
-      </ProductBox>
+        />
     </div>
   </div>
 </template>

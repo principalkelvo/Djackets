@@ -29,7 +29,7 @@
               
               <hr>
 
-              Or<router-link to="/sign-up">click here </router-link>to Register
+              Or<router-link to="/sign-up"> click here </router-link>to Register
             </form>
           </div>
         </div>
