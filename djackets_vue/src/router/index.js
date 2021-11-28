@@ -9,6 +9,7 @@ import Category from '../views/Category.vue'
 import Search from '../views/Search.vue'
 import Cart from '../views/Cart.vue'
 import Checkout from '../views/Checkout.vue'
+import Success from '../views/Success.vue'
 
 const routes = [
   {
@@ -72,6 +73,14 @@ const routes = [
     path: '/cart/checkout',
     name: 'Checkout',
     component: Checkout,
+    meta:{
+      requireLogin: true
+    }
+  },
+  {
+    path: '/cart/success',
+    name: 'Success',
+    component: Success,
     meta:{
       requireLogin: true
     }
