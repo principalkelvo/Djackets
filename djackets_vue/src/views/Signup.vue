@@ -35,7 +35,7 @@
               
               <hr>
 
-              Or<router-link to="/log-in">click here </router-link>to Log-in
+              Or <router-link to="/log-in">click here </router-link>to Log-in
             </form>
           </div>
         </div>
