@@ -58,6 +58,9 @@ export default {
       errors:[]
       }
   },
+  mounted(){
+    document.title='Register | Djackets'
+  },
   methods:{
     async submitForm(){
       this.$store.commit('setIsLoading',true)

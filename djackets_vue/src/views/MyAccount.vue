@@ -13,6 +13,9 @@
 import axios from 'axios'
 export default {
     name:'MyAccount',
+    mounted(){
+        document.title='Profile | Djackets'
+    },
     methods:{
         async logout(){
             this.$store.commit('setIsLoading',true)
