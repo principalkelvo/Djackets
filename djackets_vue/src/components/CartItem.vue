@@ -4,9 +4,14 @@
           <router-link :to="item.product.get_absolute_url">{{item.product.name}}</router-link>
       </td>
       <td>${{item.product.price}}</td>
-      <td>{{item.quantity}}</td>
+      <td>{{item.quantity}}
+          <!--increase and decrease cart items-->
+          <a @click="incrementQuantity(item)"> + </a>
+          <a @click="decrementQuantity(item)"> - </a>
+      </td>
       <td>${{getItemTotal(item).toFixed(2)}}</td>
-      <td><button class="delete"></button></td>
+      <!--remove item from cart-->
+      <td><button class="delete" @click="removeFromCart(item)"></button></td>
   </tr>
 </template>
 
@@ -24,6 +29,27 @@ export default {
     methods:{
         getItemTotal(item){
             return item.quantity*item.product.price
+        },
+        //decrease
+        decrementQuantity(item){
+            item.quantity-=1
+            if(item.quantity===0){
+                this.$emit('removeFronCart',item)
+            }
+            this.updateCart()
+        },
+        //increase
+        incrementQuantity(item){
+            item.quantity+=1
+            this.updateCart()
+        },
+        updateCart(){
+            localStorage.setItem('cart', JSON.stringify(this.$store.state.cart))
+        },
+        //delete
+        removeFromCart(item){
+            this.$emit('removeFromCart',item)
+            this.updateCart()
         }
     }
 }
