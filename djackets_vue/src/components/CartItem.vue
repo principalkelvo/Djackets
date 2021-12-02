@@ -35,7 +35,7 @@ export default {
             item.quantity-=1
             
             if(item.quantity===0){
-                this.$emit('removeFronCart',item)
+                this.$emit('removeFromCart',item)
             }
             this.updateCart()
         },
