@@ -97,22 +97,24 @@
                         </div>
                     </div>
 
-                    <div class="notification is-danger mt-4" v-if="errors.length">
+                    
+                </div>
+                <div class="notification is-danger mt-4" v-if="errors.length">
                         <p v-for="error in errors"
-                            v-bind:key="error">{{error}}>
+                            v-bind:key="error">{{error}}
                         </p>
                     </div>
 
                     <hr>
 
                     <div id="card-element" class="mb-5"></div>
+
                     <template v-if="cartTotalLength">
                         
                         <hr>
 
                         <button class="button is-dark" @click="submitForm">Pay with Stripe</button>
                     </template>
-                </div>
             </div>
         </div>
   </div>
@@ -143,17 +145,20 @@ export default {
         document.title='Checkout | Djackets'
         this.cart= this.$store.state.cart
 
-        if(this.cartTotalLength>0){
-            this.stripe= stripe('pk_test_51JCGIbJmktMF91UU0SQVvoPAoy4KVZpBqcWj20xXV1MwIxzZySFeuSOiI93Cbgo6vRpCHftKCcMah0s25AzvkPOi00emNTeTu3')
-            const elements= this.stripe.elements();
-            this.card= elements.create('card',{hidePostalCode:true})
+        if(this.cartTotalLength > 0){
+            this.stripe= Stripe('pk_test_51JCGIbJmktMF91UU0SQVvoPAoy4KVZpBqcWj20xXV1MwIxzZySFeuSOiI93Cbgo6vRpCHftKCcMah0s25AzvkPOi00emNTeTu3')
+            const elements = this.stripe.elements();
+            this.card= elements.create('card',{ hidePostalCode:true })
+
             this.card.mount('#card-element')
         }
     },
     methods:{
+        
         getItemTotal(item){
             return item.quantity*item.product.price
         },
+        
         submitForm(){
             this.errors =[]
 
@@ -178,6 +183,7 @@ export default {
             if(this.place===''){
                 this.errors.push('The place field is missing!')
             }
+            
             if(!this.errors.length){
                 this.$store.commit('setIsLoading',true)
                 this.stripe.createToken(this.card).then(result=>{
@@ -194,6 +200,7 @@ export default {
         },
         async stripeTokenHandler(token){
             const items=[]
+            
             for(let i=0; i<this.cart.items.length;i++){
                 const item= this.cart.items[i]
                 const obj= {
@@ -203,7 +210,6 @@ export default {
                 }
                 items.push(obj)
             }
-
             const data={
                 'first_name':this.first_name,
                 'last_name':this.last_name,
@@ -212,15 +218,15 @@ export default {
                 'zipcode':this.zipcode,
                 'place':this.place,
                 'phone':this.phone,
-                'items':this.items,
+                'items':items,
                 'stripe_token':token.id
             }
-
             await axios
                 .post('/api/v1/checkout/', data)
                 .then(response=>{
                     this.$store.commit('clearCart')
                     this.$router.push('/cart/success')
+                    console.log(items.length+ "data sent")
                 })
                 .catch(error=>{
                     this.errors.push('Something went wrong. Please try again')
