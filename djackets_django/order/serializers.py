@@ -1,7 +1,5 @@
-from django.db.models import fields
 from rest_framework import serializers
 
-from djackets_django import order
 from .models import Order, OrderItem
 from product.serializers import ProductSerializer
 
@@ -17,7 +15,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
 class OrderSerializer(serializers.ModelSerializer):
     items=OrderItemSerializer(many=True)
     class Meta:
-        model= order
+        model= Order
         fields=(
             "id",
             "first_name",
