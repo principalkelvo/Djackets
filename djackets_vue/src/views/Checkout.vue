@@ -226,7 +226,6 @@ export default {
                 .then(response=>{
                     this.$store.commit('clearCart')
                     this.$router.push('/cart/success')
-                    console.log(items.length+ "data sent")
                 })
                 .catch(error=>{
                     this.errors.push('Something went wrong. Please try again')
