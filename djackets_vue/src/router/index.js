@@ -47,17 +47,10 @@ const routes = [
     path: '/:category_slug/:product_slug',
     name: 'Product',
     component: Product,
-    meta:{
-      requireLogin: true
-    }
   },
   {
     path: '/:category_slug',
     name: 'Category',
-    component: Category,
-    meta:{
-      requireLogin: true
-    }
   },
   {
     path: '/search',
@@ -94,7 +87,7 @@ const router = createRouter({
 
 router.beforeEach((to,from,next) => {
   if(to.matched.some(record=>record.meta.requireLogin)&& !store.state.isAuthenticated){
-    next({name:'LogIn', query: {to: to.path } }); 
+    next({name:'Login', query: {to: to.path } }); 
   }
   else{
     next()
