@@ -51,6 +51,7 @@ const routes = [
   {
     path: '/:category_slug',
     name: 'Category',
+    component: Category,
   },
   {
     path: '/search',

@@ -19,7 +19,7 @@
 export default {
     name:'CartItem',
     props:{
-        initialItem:Object
+        initialItem: Object
     },
     data(){
         return{
