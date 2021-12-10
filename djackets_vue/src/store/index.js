@@ -16,7 +16,7 @@ export default createStore({
         state.cart= JSON.parse(localStorage.getItem('cart'))
       }
       else{
-        localStorage.setItem('cart',JSON.stringify(state.cart))
+        localStorage.setItem('cart', JSON.stringify(state.cart))
       }
 
 
@@ -37,7 +37,7 @@ export default createStore({
       else{
         state.cart.items.push(item)
       }
-      localStorage.setItem('cart',JSON.stringify(state.cart))
+      localStorage.setItem('cart', JSON.stringify(state.cart))
     },
     setIsLoading(state,status){
       state.isLoading= status
@@ -54,9 +54,9 @@ export default createStore({
       state.cart= {
         items:[]
       }
-
-      localStorage.setItem('cart',JSON.stringify(state.cart))
-      console.log("cart cleared")
+      console.log(JSON.stringify(state.cart))
+      localStorage.setItem('cart', JSON.stringify(state.cart))
+      
     }
   },
   actions: {
