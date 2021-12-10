@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ik4v!)e5&xs##u!8#5q!u*0j5+_wwq0=(o)&)dffp^b9b=x(ni
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['djacket.pokotoursandtravel.co.ke','www.djacket.pokotoursandtravel.co.ke']
+ALLOWED_HOSTS = ['127.0.0.1','djacket.pokotoursandtravel.co.ke','www.djacket.pokotoursandtravel.co.ke']
 
 STRIPE_SECRET_KEY="sk_test_51JCGIbJmktMF91UUOpWCRH6zQAkEhgFdiXYvVKZQTLp2RTuFsgdJNJr4Zek8WPPAySAZo7AWebZoPPPMOcsTg06E00FvCYyunI"
 
