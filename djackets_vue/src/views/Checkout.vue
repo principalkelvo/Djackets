@@ -231,7 +231,6 @@ export default {
                     this.errors.push('Something went wrong. Please try again')
                     console.log(error)
                 })
-            
             this.$store.commit('setIsLoading',false)
         }
     },

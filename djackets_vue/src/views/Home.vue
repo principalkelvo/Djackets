@@ -3,8 +3,11 @@
     <!--header-->
     <section class="hero is-medium is-dark mb-6">
       <div class="hero-body has-text-centered">
+      
         <p class="title mb-6">Welcome to Djackets</p>
         <p class="subtitle">The best jacket store online</p>
+      
+        
       </div>
     </section>
     <!--list of produts-->
@@ -38,7 +41,7 @@ export default {
     }
   },
   components: {Product, ProductBox },
-  mounted(){
+  mounted(){  
     this.getLatestProducts()
     document.title= 'Home | Djackets'
   },
@@ -57,8 +60,12 @@ export default {
 
         this.$store.commit('setIsLoading',false)
     }
+    
+    
   }
-};
+  
+}
+
 </script>
 <style scoped>
 
