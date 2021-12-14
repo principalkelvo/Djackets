@@ -13,7 +13,22 @@
 export default {
     name:'Success',
     mounted(){
-        document.title='Success | Djackets' 
+        document.title='Success | Djackets'
+        this.trialLoad()
+    },
+    methods:{
+        trialLoad(){
+            if( window.localStorage )
+        {
+            if( !localStorage.getItem('firstLoad') )
+            {
+            localStorage['firstLoad'] = true;
+            window.location.reload();
+            }  
+            else
+            localStorage.removeItem('firstLoad');
+        }
+        }
     }
 }
 </script>
